@@ -1,0 +1,31 @@
+<html> 
+<head> 
+<title>Ajax at work</title> 
+
+</head> 
+<body>
+<H1>Interactive Mouseovers </H1>
+<img src='sandwich.jpg'  width="500" height="372" onmouseover="getData('sandwich.txt')">
+<img src='pizza.jpg'  width="400" height="400" onmouseover="getData('pizza.txt')">
+<img src='soup.jpg'  width="400" height="392" onmouseover="getData('soup.txt')">
+<div id="targetDiv">
+<p>The fetched data will go here.</p> 
+</div> 
+<script language = "javascript">
+function getData(dataSource) 
+{ 
+	var myObj = new XMLHttpRequest();
+	myObj.onreadystatechange = function() 
+	{ 
+		if (myObj.readyState == 4 && myObj.status == 200) 
+		{ 
+			document.getElementById("targetDiv").innerHTML = myObj.responseText; 
+		} 
+	} 
+myObj.open("GET", dataSource,true);
+myObj.send();	
+}
+
+</script>
+</body> 
+</html>
